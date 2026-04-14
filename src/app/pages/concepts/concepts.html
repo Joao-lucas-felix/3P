@@ -1,0 +1,141 @@
+<app-navbar />
+
+<main>
+  <div class="md:w-[60%] w-[80%] mt-32 flex mx-auto flex-col gap-y-10">
+    <app-concept-navigation />
+
+    <section
+      class="bg-slate-950/20 text-blue-50 border border-blue-200/5 rounded-3xl mx-auto p-8 grow max-xl shadow-blue-950/25 shadow-md"
+    >
+      <h1>
+        <strong
+          class="font-pixel font-normal text-blue-200 text-2xl text-shadow-md text-shadow-blue-950"
+        >
+          Conceitos
+        </strong>
+      </h1>
+
+      <p class="mt-2">
+        Esta página será o ponto de entrada para a trilha de conceitos do 3P.
+      </p>
+
+      <p class="mt-2">
+        Ela foi pensada para ajudar você a entender o que estudar primeiro e como avançar
+        com mais segurança pelos fundamentos da programação.
+      </p>
+    </section>
+
+    <section
+      class="bg-slate-950/20 text-blue-50 border border-blue-200/5 rounded-3xl mx-auto p-8 grow max-xl shadow-blue-950/25 shadow-md"
+    >
+      <h2>
+        <strong
+          class="font-pixel font-normal text-blue-200 text-xl text-shadow-md text-shadow-blue-950"
+        >
+          Como usar esta página
+        </strong>
+      </h2>
+
+      <p class="mt-2">
+        Leia os conceitos na ordem recomendada e use cada bloco como uma ponte entre a
+        explicação teórica e a prática com exercícios.
+      </p>
+
+      <p class="mt-2">
+        A trilha de conceitos será apresentada aqui em pequenos passos, com foco em quem
+        está começando e precisa de uma progressão clara.
+      </p>
+    </section>
+
+
+    @for (group of conceptGroups; track group.title) {
+      <section
+        class="bg-slate-950/20 text-blue-50 border border-blue-200/5 rounded-3xl mx-auto p-8 grow max-xl shadow-blue-950/25 shadow-md"
+      >
+        <h2>
+          <strong
+            class="font-pixel font-normal text-blue-200 text-xl text-shadow-md text-shadow-blue-950"
+          >
+            {{ group.title }}
+          </strong>
+        </h2>
+
+        <p class="mt-2">
+          {{ group.description }}
+        </p>
+
+        <div class="mt-6 flex flex-col gap-y-6">
+          @for (concept of group.concepts; track concept.title) {
+            <article class="border-t border-blue-200/10 pt-6 first:border-t-0 first:pt-0">
+              <h3 class="font-pixel font-normal text-blue-200 text-lg text-shadow-md text-shadow-blue-950">
+                {{ concept.title }}
+              </h3>
+
+              <p class="mt-2">
+                {{ concept.summary }}
+              </p>
+
+              <div class="mt-4">
+                <p class="text-blue-200">O que você vai praticar</p>
+                <ul class="mt-2 list-disc pl-5 space-y-1 text-blue-50">
+                  @for (learning of concept.learnings; track learning) {
+                    <li>{{ learning }}</li>
+                  }
+                </ul>
+              </div>
+
+              <p class="mt-4">
+                {{ concept.studyTip }}
+              </p>
+
+              <div class="mt-4">
+                <p class="text-blue-100/80">
+                  No repositório de exercícios você encontra problemas e resoluções relacionados a
+                  este conceito para avançar para a prática.
+                </p>
+                <a
+                  class="inline-block mt-3 mr-4 text-blue-200 hover:text-blue-100 underline underline-offset-4 transition"
+                  [href]="'#/concepts/' + concept.slug"
+                >
+                  Abrir página do conceito
+                </a>
+                <a
+                  class="inline-block mt-3 text-blue-200 hover:text-blue-100 underline underline-offset-4 transition"
+                  [href]="concept.practiceHref"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Ver exercícios e resoluções
+                </a>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    }
+
+    <section
+      class="bg-slate-950/20 text-blue-50 border border-blue-200/5 rounded-3xl mx-auto p-8 grow max-xl shadow-blue-950/25 shadow-md"
+    >
+      <h2>
+        <strong
+          class="font-pixel font-normal text-blue-200 text-xl text-shadow-md text-shadow-blue-950"
+        >
+          Continue sua jornada
+        </strong>
+      </h2>
+
+      <p class="mt-2">
+        Escolha um conceito, revise os pontos principais e avance para a prática no seu
+        ritmo.
+      </p>
+
+      <p class="mt-2">
+        A cada novo bloco estudado, você fortalece a base necessária para resolver
+        exercícios com mais confiança.
+      </p>
+    </section>
+  </div>
+</main>
+
+<app-footer />

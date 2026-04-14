@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal} from '@angular/core';
+﻿import { Component, signal, WritableSignal} from '@angular/core';
 import { Link } from '../../interfaces/links'
 @Component({
   selector: 'app-navbar',
@@ -10,8 +10,8 @@ export class Navbar {
   menuOpen: WritableSignal<boolean> = signal(false)
 
   linksNav = signal<Link[]>([
-    {route: "#", routeName: "Conceitos"},
-    {route: "#", routeName: "Exercícios"},
+    {route: "/#/concepts", routeName: "Conceitos"},
+    {route: "/#/exercises", routeName: "Exercícios"},
     {route: "#", routeName: "Sobre"},
   ])
   menuToggle() {
