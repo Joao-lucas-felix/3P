@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Concepts } from './concepts';
 
@@ -23,9 +23,13 @@ describe('Concepts', () => {
 
   it('should render the concepts page opening', () => {
     const compiled = fixture.nativeElement as HTMLElement;
+    const hero = compiled.querySelector('[data-testid="concepts-hero"]');
 
+    expect(hero).not.toBeNull();
+    expect(hero?.className).toContain('bg-slate-950/82');
     expect(compiled.querySelector('h1')?.textContent).toContain('Conceitos');
     expect(compiled.textContent).toContain('entender o que estudar primeiro');
+    expect(compiled.textContent).toContain('Escolha uma trilha e avance no seu ritmo');
   });
 
   it('should render the main content area for concept blocks', () => {
@@ -38,9 +42,12 @@ describe('Concepts', () => {
 
   it('should explain how to use the page', () => {
     const compiled = fixture.nativeElement as HTMLElement;
+    const guide = compiled.querySelector('[data-testid="concepts-guide"]');
 
+    expect(guide).not.toBeNull();
     expect(compiled.textContent).toContain('Como usar esta página');
     expect(compiled.textContent).toContain('Leia os conceitos na ordem recomendada');
+    expect(compiled.textContent).toContain('revisar o conceito e depois praticar');
   });
 
   it('should render the Conceitos Basicos block', () => {
@@ -112,9 +119,9 @@ describe('Concepts', () => {
 
   it('should reduce the number of visible concept cards by grouping related concepts', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const sections = Array.from(compiled.querySelectorAll('main section'));
+    const sections = Array.from(compiled.querySelectorAll('main section[data-testid="concept-group"]'));
 
-    const groupSections = sections.slice(2).filter((section) => section.querySelector('article'));
+    const groupSections = sections.filter((section) => section.querySelector('article'));
 
     expect(groupSections.length).toBe(3);
     expect(groupSections.every((section) => section.querySelector('h2'))).toBe(true);
@@ -141,6 +148,14 @@ describe('Concepts', () => {
     expect(conceptArticles.length).toBe(9);
   });
 
+  it('should render each concept inside a distinct inner card shell', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const conceptCards = Array.from(compiled.querySelectorAll('[data-testid="concept-card"]'));
+
+    expect(conceptCards.length).toBe(9);
+    expect(conceptCards.every((card) => card.className.includes('rounded-[1.75rem]'))).toBe(true);
+  });
+
   it('should provide contextual practice calls inside each group', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const links = Array.from(compiled.querySelectorAll('main section a'));
@@ -154,11 +169,14 @@ describe('Concepts', () => {
 
   it('should render a closing section that encourages continuity', () => {
     const compiled = fixture.nativeElement as HTMLElement;
+    const closing = compiled.querySelector('[data-testid="concepts-closing"]');
     const text = compiled.textContent ?? '';
 
+    expect(closing).not.toBeNull();
     expect(text).toContain('Continue sua jornada');
     expect(text).toContain('Escolha um conceito');
     expect(text).toContain('avance para a prática');
+    expect(text).toContain('Abrir página do conceito');
   });
 
   it('should render the compact concept navigation on the concepts page', () => {

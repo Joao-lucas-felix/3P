@@ -1,5 +1,5 @@
-﻿import { Component, signal, WritableSignal} from '@angular/core';
-import { Link } from '../../interfaces/links'
+﻿﻿import { Component, signal, WritableSignal} from '@angular/core';
+import { Link, mainNavigationLinks } from '../../interfaces/links';
 @Component({
   selector: 'app-navbar',
   imports: [],
@@ -7,14 +7,11 @@ import { Link } from '../../interfaces/links'
   styleUrl: './navbar.css',
 })
 export class Navbar {
-  menuOpen: WritableSignal<boolean> = signal(false)
+  protected readonly homeHref = '#/home';
+  protected readonly linksNav = signal<Link[]>(mainNavigationLinks);
+  menuOpen: WritableSignal<boolean> = signal(false);
 
-  linksNav = signal<Link[]>([
-    {route: "/#/concepts", routeName: "Conceitos"},
-    {route: "/#/exercises", routeName: "Exercícios"},
-    {route: "#", routeName: "Sobre"},
-  ])
   menuToggle() {
-    this.menuOpen.update(v => !v)
+    this.menuOpen.update((isOpen) => !isOpen);
   }
 }

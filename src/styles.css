@@ -2,6 +2,31 @@
 
 @import "tailwindcss";
 
+:root {
+  color-scheme: dark;
+  --app-background: #020617;
+  --app-text: #dbeafe;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--app-background);
+  color: var(--app-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
 .font-pixel {
   font-family: "Jersey 10", monospace;
 }

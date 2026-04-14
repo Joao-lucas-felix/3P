@@ -1,77 +1,144 @@
-<app-navbar/>
+﻿<app-navbar />
 
-<main>    
-    <div class="md:w-[60%] w-[80%] mt-32 flex mx-auto flex-col gap-y-10">
-        <!--Saudação-->
-        <div class=" bg-slate-950/20 text-blue-50
-                    border border-blue-200/5
-                    rounded-3xl
-                    mx-auto
-                    p-8
-                    grow
-                    max-xl
-                    shadow-blue-950/25 shadow-md
-                ">
-                <h1>
-                    <strong class="font-pixel font-normal text-blue-200 text-2xl text-shadow-md text-shadow-blue-950">
-                        Sejam Bem vindos ao Programação: Primeiros Passos!
-                    </strong><br>
-                </h1>
-                <p>
-     
-                    Aqui você vai aprender lógica, resolver desafios e descobrir como transformar ideias em código. Sem pressa, sem complicação — um passo de cada vez.
+<main class="pb-14 pt-32 md:pt-36">
+  <div class="mx-auto flex w-[88%] max-w-6xl flex-col gap-6 md:gap-8">
+    <section
+      class="home-hero overflow-hidden rounded-[2.5rem] border border-cyan-400/12 bg-slate-950/82 p-6 text-slate-100 shadow-[0_24px_90px_rgba(2,6,23,0.45)] md:p-8 lg:p-10"
+      data-testid="home-hero"
+    >
+      <div aria-hidden="true" class="home-hero__mesh"></div>
+
+      <div class="relative z-10 grid gap-8 lg:grid-cols-[1.2fr_0.9fr] lg:items-center">
+        <div>
+          <p class="text-[0.68rem] uppercase tracking-[0.36em] text-cyan-100/60">
+            Seu primeiro mapa para entrar em programação
+          </p>
+
+          <h1 class="mt-4 max-w-2xl">
+            <strong class="font-pixel text-5xl leading-[0.92] text-cyan-100 md:text-6xl">
+              Programação: Primeiros Passos
+            </strong>
+          </h1>
+
+          <p class="mt-6 max-w-2xl text-base leading-7 text-slate-200/80">
+            Aprenda lógica, organize a base e avance para exercícios reais com menos
+            ansiedade e mais clareza sobre o que fazer em cada etapa.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              class="inline-flex items-center justify-center rounded-full border border-cyan-300/30 bg-cyan-300/12 px-5 py-3 text-sm font-semibold text-cyan-50 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/60 hover:bg-cyan-300/20"
+              href="#/concepts"
+            >
+              Explorar conceitos
+            </a>
+
+            <a
+              class="inline-flex items-center justify-center rounded-full border border-white/12 bg-slate-900/80 px-5 py-3 text-sm font-semibold text-slate-100 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/35 hover:text-cyan-100"
+              href="#/exercises"
+            >
+              Ir para os exercícios
+            </a>
+          </div>
+
+          <div class="mt-8 grid gap-3 sm:grid-cols-3">
+            @for (card of focusCards; track card.title) {
+              <article class="rounded-[1.5rem] border border-cyan-400/10 bg-slate-950/55 p-4">
+                <p class="text-[0.62rem] uppercase tracking-[0.3em] text-cyan-100/55">
+                  {{ card.eyebrow }}
                 </p>
-                
-        </div>
-        <!--Triangulo de Fala-->
-        <div class=" mx-auto
-                  border-l-14 border-l-transparent
-                  border-r-14 border-r-transparent
-                  border-t-14 border-t-blue-200/30">
-        </div>
-        <!--Mascote-->
-        <div class=" mx-auto mt-4">
-            <figure class=""><img src="assets/images/mascote-3p2.png" alt="mascote 3P" loading="lazy"></figure>
+                <p class="font-pixel mt-3 text-xl text-cyan-100">{{ card.title }}</p>
+                <p class="mt-2 text-sm leading-6 text-slate-300/75">
+                  {{ card.description }}
+                </p>
+              </article>
+            }
+          </div>
         </div>
 
-<main class=" bg-slate-950/20 text-blue-50
-                    border border-blue-200/5
-                    rounded-3xl
-                    mx-auto
-                    p-8
-                    grow
-                    max-xl
-                    shadow-blue-950/25 shadow-md
-                ">
-    <div class=" bg-slate-950/20 text-blue-50           
-                mx-auto
-                p-4
-                grow
-                max-xl
-            ">
-        <h2>
-            <strong class="font-pixel font-normal text-blue-200 text-2xl text-shadow-md text-shadow-blue-950">
-                Programação: Primeiros Passos
-            </strong><br>
-        </h2>
+        <div class="relative">
+          <article
+            class="home-terminal rounded-[2rem] border border-cyan-400/12 bg-slate-950/80 p-5 text-slate-100 shadow-[0_18px_60px_rgba(2,6,23,0.45)] md:p-6"
+          >
+            <p class="text-[0.62rem] uppercase tracking-[0.3em] text-cyan-100/60">
+              Modo iniciante
+            </p>
+            <h2 class="font-pixel mt-3 text-3xl text-cyan-100">Entre sem travar</h2>
+            <p class="mt-4 text-sm leading-6 text-slate-200/75">
+              Aqui você encontra explicações claras, prática guiada e um caminho simples
+              para comparar sua solução com o repositório quando estiver pronto.
+            </p>
 
-        <p class="mt-2">
-            O <strong>Programação: Primeiros Passos (3P)</strong> é um espaço criado para ajudar iniciantes a dar seus primeiros passos no mundo da programação.
-        </p>
+            <div
+              class="mx-auto mt-5 h-0 w-0 border-l-[1.2rem] border-r-[1.2rem] border-t-[1.1rem] border-l-transparent border-r-transparent border-t-cyan-200/30"
+              data-testid="home-hero-triangle"
+            ></div>
 
-        <p class="mt-2">
-            Aprender a programar pode parecer difícil no começo. Novos conceitos, lógica, algoritmos e linguagens podem gerar muitas dúvidas. Por isso, o 3P apresenta esses fundamentos de forma <strong>simples, gradual e prática</strong>.
-        </p>
+            <figure class="mt-4 p-2" data-testid="home-hero-mascot">
+              <img
+                alt="Mascote do 3P pronto para guiar seus estudos"
+                class="mx-auto w-full max-w-[8.5rem] drop-shadow-[0_10px_30px_rgba(34,211,238,0.16)] md:max-w-[9.5rem]"
+                loading="lazy"
+                src="assets/images/mascote-3p2.png"
+              />
+            </figure>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <p class="mt-2">
-            Aqui você encontrará explicações claras, desafios e exercícios que ajudam a desenvolver o raciocínio lógico e a transformar ideias em código.
-        </p>
+    <section class="grid gap-4 lg:grid-cols-2" data-testid="home-next-steps">
+      @for (step of nextSteps; track step.title) {
+        <article
+          class="rounded-[2rem] border border-cyan-400/12 bg-slate-950/40 p-6 text-slate-100 shadow-[0_18px_50px_rgba(2,6,23,0.36)]"
+        >
+          <p class="text-[0.68rem] uppercase tracking-[0.34em] text-cyan-100/60">
+            {{ step.eyebrow }}
+          </p>
+          <h2 class="font-pixel mt-3 text-3xl text-cyan-100">{{ step.title }}</h2>
+          <p class="mt-4 text-sm leading-6 text-slate-200/75">
+            {{ step.description }}
+          </p>
+          <a
+            class="mt-6 inline-flex rounded-full border border-cyan-400/15 bg-slate-900/75 px-5 py-3 text-sm font-semibold text-slate-100 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:text-cyan-100"
+            [href]="step.href"
+          >
+            {{ step.cta }}
+          </a>
+        </article>
+      }
+    </section>
 
-        <p class="mt-2">
-            Sem pressa, sem complicação — <strong>um passo de cada vez</strong>.
+    <section
+      class="rounded-[2rem] border border-cyan-400/12 bg-slate-950/40 p-6 text-slate-100 shadow-[0_18px_50px_rgba(2,6,23,0.36)] md:p-8"
+      data-testid="home-study-flow"
+    >
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-[0.68rem] uppercase tracking-[0.36em] text-cyan-100/60">
+            Sem ansiedade
+          </p>
+          <h2 class="font-pixel mt-3 text-3xl text-cyan-100">Como estudar aqui</h2>
+        </div>
+
+        <p class="max-w-xl text-sm leading-6 text-slate-200/75">
+          A ideia é transformar cada etapa em uma rota simples: entender, praticar e
+          revisar sem perder direção.
         </p>
-    </div>
+      </div>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-3">
+        @for (item of studyFlow; track item.title) {
+          <article class="rounded-[1.5rem] border border-white/10 bg-slate-950/60 p-5">
+            <p class="font-pixel text-2xl text-cyan-100">{{ item.title }}</p>
+            <p class="mt-3 text-sm leading-6 text-slate-300/75">
+              {{ item.description }}
+            </p>
+          </article>
+        }
+      </div>
+    </section>
+  </div>
 </main>
 
-
-<app-footer/>
+<app-footer />

@@ -1,63 +1,55 @@
-<section class="   
-  fixed top-0 left-0 right-0
-  z-50
+﻿﻿<section
+  class="fixed top-0 left-0 right-0 z-50 m-5 mx-auto flex w-[85%] max-w-4xl flex-col rounded-3xl border border-blue-200/30 bg-slate-900/20 text-blue-100 shadow-md shadow-slate-900/80 backdrop-blur-3xl transition-all duration-300"
+  data-testid="navbar-shell"
+>
+  <nav class="mx-10 flex items-center justify-between px-6 py-4 md:mx-20">
+    <a
+      [href]="homeHref"
+      class="font-pixel font-normal text-4xl text-blue-200 text-shadow-md text-shadow-blue-950"
+      data-testid="navbar-brand"
+    >
+      3P
+    </a>
 
- bg-slate-900/20 text-blue-100
-    backdrop-blur-3xl
-    border border-blue-200/30
-    rounded-3xl
-    w-[85%] max-w-4xl
-    mx-auto m-5
-    transition-all duration-300
-    flex flex-col
-    shadow-md shadow-slate-900/80
-                ">
-
-            
-    <nav class="  mx-10 md:mx-20 px-6 py-4 flex items-center justify-between">
-        
-        <div class="font-pixel font-normal text-blue-200 text-4xl text-shadow-md text-shadow-blue-950">
-            <a href="/3P/home">3P</a>
-        </div>
-
-        <div class="hidden md:flex items-center gap-8 text-sm text-blue-100/70 ">
-            @for (item of linksNav(); track $index) {
-                <a class="hover:text-blue-400 cursor-pointer transition "
-                    [href]="item.route">
-                    {{ item.routeName }}
-                </a>
-            }
-        </div>
-
-        
-   
-
-        <!-- Botão Mobile -->
-        <div>
-            <button class="md:hidden text-blue-100/70 z-10 relative ml-auto" (click)="menuToggle()">
-            ☰
-            </button>
-        </div>
-    </nav>
-      <!-- Menu Mobile -->
-    @if (menuOpen()) {  
-    <div class="            
-            md:hidden
-            px-6 pb-4
-            space-y-2
-            mx-10
-            transition-all duration-300"
- 
+    <div class="hidden items-center gap-8 text-sm text-blue-100/70 md:flex" data-testid="navbar-desktop-links">
+      @for (item of linksNav(); track item.routeName) {
+        <a
+          class="cursor-pointer transition hover:text-blue-400"
+          [href]="item.route"
         >
-            @for (item of linksNav(); track $index) {
-                <a class="block hover:bg-blue-400/20 hover:text-white hover:underline text-center
-                    transition rounded-3xl p-1.5"
-                    [href]="item.route">
-                    {{ item.routeName }}
-                </a>
-            }
+          {{ item.routeName }}
+        </a>
+      }
     </div>
 
-    } 
-     
+    <div>
+      <button
+        (click)="menuToggle()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-controls="navbar-mobile-panel"
+        class="relative ml-auto text-blue-100/70 md:hidden"
+        data-testid="navbar-toggle"
+        type="button"
+      >
+        ☰
+      </button>
+    </div>
+  </nav>
+
+  @if (menuOpen()) {
+    <div
+      class="mx-10 space-y-2 px-6 pb-4 transition-all duration-300 md:hidden"
+      data-testid="navbar-mobile-panel"
+      id="navbar-mobile-panel"
+    >
+      @for (item of linksNav(); track item.routeName) {
+        <a
+          class="block rounded-3xl p-1.5 text-center transition hover:bg-blue-400/20 hover:text-white hover:underline"
+          [href]="item.route"
+        >
+          {{ item.routeName }}
+        </a>
+      }
+    </div>
+  }
 </section>

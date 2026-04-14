@@ -1,1 +1,21 @@
-<router-outlet />
+<div class="app-shell app-shell--dark app-shell--deeper-dark" data-testid="app-shell">
+  <div aria-hidden="true" class="app-shell__ambient" data-testid="app-shell-ambient">
+    <span class="app-shell__orb app-shell__orb--cyan"></span>
+    <span class="app-shell__orb app-shell__orb--violet"></span>
+    <span class="app-shell__grid"></span>
+  </div>
+
+  <div class="app-shell__frame" data-testid="app-shell-frame">
+    <span
+      aria-hidden="true"
+      class="app-shell__signature font-pixel"
+      data-testid="app-shell-signature"
+    >
+      3P
+    </span>
+
+    <div class="app-shell__content">
+      <router-outlet />
+    </div>
+  </div>
+</div>

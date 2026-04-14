@@ -1,0 +1,45 @@
+﻿:host {
+  display: block;
+}
+
+.home-hero {
+  position: relative;
+}
+
+.home-hero::before {
+  content: '';
+  position: absolute;
+  right: -5rem;
+  top: -4rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(56 189 248 / 0.24), transparent 68%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.home-hero__mesh {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(148 163 184 / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(148 163 184 / 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at top right, black 0%, transparent 72%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.home-terminal {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-terminal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(56 189 248 / 0.08), transparent 34%);
+  pointer-events: none;
+}

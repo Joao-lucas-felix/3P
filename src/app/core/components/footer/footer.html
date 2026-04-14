@@ -1,32 +1,52 @@
+﻿<footer class="mt-24 px-4 pb-6 md:px-6">
+  <div
+    class="mx-auto w-full max-w-6xl overflow-hidden rounded-[2rem] border border-cyan-400/15 bg-slate-950/88 text-slate-100 shadow-[0_30px_90px_rgba(2,6,23,0.42)] backdrop-blur-xl"
+    data-testid="footer-shell"
+  >
+    <div class="grid gap-8 px-6 py-8 md:grid-cols-[1.35fr_0.85fr_0.8fr] md:px-8">
+      <section>
+        <p class="text-[0.68rem] uppercase tracking-[0.36em] text-cyan-100/60">
+          Continue sua jornada
+        </p>
+        <h3 class="font-pixel mt-3 text-3xl text-cyan-100" data-testid="footer-title">
+          Programação: Primeiros Passos
+        </h3>
+        <p class="mt-4 max-w-xl text-sm leading-6 text-slate-200/75">
+          Um espaço para aprender programação de forma simples, prática e gradual.
+          Desenvolva seu raciocínio lógico e comece a transformar ideias em código.
+        </p>
+      </section>
 
-<footer class="mt-24 border-t border-blue-200/10 bg-slate-950/30 text-blue-100 w-full">
-    
-    <div class="md:w-[60%] w-[80%] mx-auto py-10 flex flex-col gap-8">
-
-        <!-- Nome do Projeto -->
-        <div>
-            <h3 class="font-pixel text-blue-200 text-xl">
-                Programação: Primeiros Passos (3P)
-            </h3>
-            <p class="text-sm mt-2 text-blue-100/80">
-                Um espaço para aprender programação de forma simples, prática e gradual.
-                Desenvolva seu raciocínio lógico e comece a transformar ideias em código.
-            </p>
+      <section data-testid="footer-links">
+        <p class="text-sm font-semibold text-slate-100">Navegação</p>
+        <div class="mt-4 flex flex-col gap-3">
+          @for (link of links; track link.routeName) {
+            <a
+              class="w-fit rounded-full border border-cyan-400/15 bg-slate-900/75 px-4 py-2 text-sm text-slate-200/80 transition duration-300 hover:border-cyan-300/40 hover:text-cyan-100"
+              [href]="link.route"
+            >
+              {{ link.routeName }}
+            </a>
+          }
         </div>
+      </section>
 
-        <!-- Links -->
-        <div class="flex flex-wrap gap-6 text-sm">
-            <a href="#" class="hover:text-blue-300 transition-colors">Início</a>
-            <a href="#" class="hover:text-blue-300 transition-colors">Desafios</a>
-            <a href="#" class="hover:text-blue-300 transition-colors">Materiais</a>
-            <a href="#" class="hover:text-blue-300 transition-colors">Sobre</a>
-        </div>
-
-        <!-- Créditos -->
-        <div class="text-xs text-blue-100/60 border-t border-blue-200/10 pt-4">
-            © 2026 Programação: Primeiros Passos — Projeto educacional para iniciantes em programação.
-        </div>
-
+      <section>
+        <p class="text-sm font-semibold text-slate-100">Como usar</p>
+        <p class="mt-4 text-sm leading-6 text-slate-200/70">
+          Comece pelos conceitos para organizar sua base e depois avance para os exercícios
+          no seu ritmo.
+        </p>
+        <p class="mt-4 text-sm leading-6 text-slate-200/70">
+          Sempre que precisar, volte aos materiais e compare sua abordagem com o
+          repositório de resoluções.
+        </p>
+      </section>
     </div>
 
+    <div class="border-t border-cyan-400/10 px-6 py-4 text-xs tracking-[0.16em] text-slate-400 md:px-8">
+      © 2026 Programação: Primeiros Passos — Projeto educacional para iniciantes em
+      programação.
+    </div>
+  </div>
 </footer>

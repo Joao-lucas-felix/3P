@@ -51,6 +51,8 @@ describe('ExerciseSubcategoryCard', () => {
     const container = compiled.querySelector('[data-testid="exercise-subcategory"]');
 
     expect(container?.className).toContain('p-6');
+    expect(container?.className).toContain('rounded-[2rem]');
+    expect(container?.className).toContain('bg-slate-950/50');
   });
 
   it('should expand and collapse when clicked', () => {
@@ -83,6 +85,7 @@ describe('ExerciseSubcategoryCard', () => {
 
     expect(compiled.textContent).toContain('Maior de Idade');
     expect(compiled.textContent).toContain('regra de classificação');
+    expect(compiled.textContent).toContain('Ver exercício no repositório');
     expect(link?.getAttribute('href')).toContain('conditionals/maior-de-idade');
   });
 });

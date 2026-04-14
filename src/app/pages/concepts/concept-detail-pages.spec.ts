@@ -117,19 +117,26 @@ describe('Concept detail pages', () => {
       it('should render the page title and introduction', () => {
         const compiled = fixture.nativeElement as HTMLElement;
         const text = compiled.textContent ?? '';
+        const hero = compiled.querySelector('section[data-testid="concept-detail-hero"]');
 
+        expect(hero).not.toBeNull();
         expect(compiled.querySelector('h1')?.textContent).toContain(page.title);
         expect(text).toContain(page.intro);
+        expect(hero?.textContent).toContain('Trilha de conceitos');
+        expect(hero?.textContent).toContain('Estude em blocos curtos');
       });
 
       it('should contextualize the exercises repository link', () => {
         const compiled = fixture.nativeElement as HTMLElement;
+        const practiceCard = compiled.querySelector('section[data-testid="concept-detail-practice"]');
         const links = Array.from(compiled.querySelectorAll('a'));
         const link = links.find((currentLink) =>
           (currentLink.textContent ?? '').includes('Ver exercícios e resoluções'),
         );
 
         expect(compiled.textContent).toContain('No repositório de exercícios');
+        expect(practiceCard).not.toBeNull();
+        expect(practiceCard?.textContent).toContain('Pratique com apoio do repositório');
         expect(link?.getAttribute('href')).toContain(page.repositoryPath);
       });
 
@@ -144,9 +151,12 @@ describe('Concept detail pages', () => {
       it('should render the reusable concept navigation with the current page highlighted', () => {
         const compiled = fixture.nativeElement as HTMLElement;
         const navigation = compiled.querySelector('section[data-testid="concept-navigation"]');
+        const contentShell = compiled.querySelector('section[data-testid="concept-detail-content"]');
 
         expect(navigation).not.toBeNull();
+        expect(contentShell).not.toBeNull();
         expect(navigation?.textContent).toContain(page.title);
+        expect(contentShell?.querySelectorAll('section').length).toBeGreaterThanOrEqual(2);
 
         (navigation as HTMLElement).click();
         fixture.detectChanges();
@@ -156,6 +166,19 @@ describe('Concept detail pages', () => {
         );
 
         expect(currentLink?.getAttribute('aria-current')).toBe('page');
+      });
+
+      it('should keep responsive layout and visible focus styles in the shared shell', () => {
+        const compiled = fixture.nativeElement as HTMLElement;
+        const hero = compiled.querySelector('section[data-testid="concept-detail-hero"]');
+        const practiceCard = compiled.querySelector('section[data-testid="concept-detail-practice"]');
+        const heroGrid = hero?.querySelector('.grid');
+        const practiceGrid = practiceCard?.querySelector('.grid');
+        const links = Array.from(compiled.querySelectorAll('section[data-testid="concept-detail-practice"] a'));
+
+        expect(heroGrid?.className).toContain('lg:grid-cols-[minmax(0,1.5fr)_minmax(18rem,0.9fr)]');
+        expect(practiceGrid?.className).toContain('lg:grid-cols-[minmax(0,1.45fr)_auto]');
+        expect(links.every((link) => (link.getAttribute('target') ?? '') === '_blank')).toBe(true);
       });
     });
   }

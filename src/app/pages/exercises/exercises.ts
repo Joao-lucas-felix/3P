@@ -11,53 +11,37 @@ import { exerciseSubcategories } from './exercises.data';
   template: `
     <app-navbar />
 
-    <main>
-      <div class="md:w-[60%] w-[80%] mt-32 flex mx-auto flex-col gap-y-10">
-        <section
-          class="bg-slate-950/20 text-blue-50 border border-blue-200/5 rounded-3xl mx-auto p-8 grow max-xl shadow-blue-950/25 shadow-md"
-        >
-          <h1>
-            <strong
-              class="font-pixel font-normal text-blue-200 text-2xl text-shadow-md text-shadow-blue-950"
-            >
-              Exercícios
-            </strong>
-          </h1>
+    <main class="pb-14 pt-32 md:pt-36">
+      <div class="mx-auto flex w-[88%] max-w-6xl flex-col gap-6 md:gap-8">
 
-          <p class="mt-2">
-            Esta página organiza a prática por subcategorias para ajudar você a encontrar
-            exercícios com mais clareza.
-          </p>
-
-          <p class="mt-2">
-            Nesta etapa, já é possível expandir um grupo por vez para explorar exercícios e
-            acessar suas resoluções no repositório.
-          </p>
-
-          <p class="mt-2 text-blue-100/80">
-            Escolha uma subcategoria, leia o resumo do exercício e use o link para comparar sua
-            abordagem com a resolução disponível no repositório.
-          </p>
-        </section>
 
         <section
-          class="bg-slate-950/20 text-blue-50 border border-blue-200/5 rounded-3xl mx-auto p-8 grow max-xl shadow-blue-950/25 shadow-md"
+          data-testid="exercises-groups"
+          class="rounded-[2.2rem] border border-cyan-400/12 bg-slate-950/84 p-6 text-blue-50 shadow-[0_22px_80px_rgba(2,6,23,0.36)] md:p-8"
         >
-          <h2>
-            <strong
-              class="font-pixel font-normal text-blue-200 text-xl text-shadow-md text-shadow-blue-950"
-            >
-              Cobertura principal mapeada
-            </strong>
-          </h2>
+            <div>
+              <p class="font-pixel text-xs uppercase tracking-[0.28em] text-cyan-200/78">
+                Prática guiada por trilhas
+              </p>
 
-          <p class="mt-2 text-blue-100/80">
-            Esta cobertura principal já organiza {{ totalSubcategories }} subcategorias reais e
-            {{ totalExercises }} exercícios iniciais, mantendo a navegação recolhida para
-            preservar leitura simples e controle visual.
-          </p>
+              <h1 class="mt-5">
+                <strong
+                  class="font-pixel text-2xl font-normal text-cyan-100 text-shadow-md text-shadow-slate-950 md:text-3xl"
+                >
+                  Exercícios
+                </strong>
+              </h1>
 
-          <div class="mt-5 space-y-5" data-testid="exercise-subcategory-list">
+              <p class="mt-3 text-sm leading-7 text-blue-100/76">
+                {{ totalSubcategories }} subcategorias e {{ totalExercises }} exercícios para
+                praticar no seu ritmo.
+              </p>
+            </div>
+
+          <div
+            class="mt-6  gap-4 space-y-4   xl:space-y-0"
+            data-testid="exercise-subcategory-list"
+          >
             @for (subcategory of exerciseSubcategories; track subcategory.slug) {
               <app-exercise-subcategory [subcategory]="subcategory" />
             }

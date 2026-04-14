@@ -1,0 +1,111 @@
+:host {
+  display: block;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100dvh;
+  overflow: clip;
+  background:
+    radial-gradient(circle at top left, rgb(34 211 238 / 0.2), transparent 28%),
+    radial-gradient(circle at 85% 18%, rgb(168 85 247 / 0.16), transparent 24%),
+    linear-gradient(180deg, #020617 0%, #020617 52%, #01030a 100%);
+}
+
+.app-shell--deeper-dark {
+  background:
+    radial-gradient(circle at top left, rgb(34 211 238 / 0.12), transparent 24%),
+    radial-gradient(circle at 85% 18%, rgb(168 85 247 / 0.1), transparent 20%),
+    linear-gradient(180deg, #01030a 0%, #01030a 48%, #000103 100%);
+}
+
+.app-shell__ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.app-shell__orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(16px);
+  opacity: 0.7;
+}
+
+.app-shell__orb--cyan {
+  top: -6rem;
+  left: -4rem;
+  width: 18rem;
+  height: 18rem;
+  background: radial-gradient(circle, rgb(103 232 249 / 0.42), transparent 68%);
+}
+
+.app-shell__orb--violet {
+  top: 18rem;
+  right: -5rem;
+  width: 20rem;
+  height: 20rem;
+  background: radial-gradient(circle, rgb(192 132 252 / 0.22), transparent 70%);
+}
+
+.app-shell__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(148 163 184 / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(148 163 184 / 0.08) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black 28%, transparent 88%);
+}
+
+.app-shell__frame {
+  position: relative;
+  min-height: 100dvh;
+  padding: 1rem;
+}
+
+.app-shell__frame::before {
+  content: '';
+  position: fixed;
+  inset: 1rem;
+  background: linear-gradient(180deg, rgb(15 23 42 / 0.24), rgb(2 6 23 / 0.08));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.04),
+    0 24px 80px rgb(2 6 23 / 0.45);
+  pointer-events: none;
+}
+
+.app-shell__content {
+  position: relative;
+  z-index: 1;
+}
+
+.app-shell__signature {
+  position: fixed;
+  right: clamp(1rem, 2vw, 2rem);
+  bottom: 0.75rem;
+  z-index: 0;
+  color: rgb(103 232 249 / 0.14);
+  font-size: clamp(3rem, 11vw, 8rem);
+  line-height: 1;
+  letter-spacing: 0.24em;
+  text-shadow: 0 0 32px rgb(14 165 233 / 0.2);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (width < 768px) {
+  .app-shell__frame {
+    padding: 0.75rem;
+  }
+
+  .app-shell__frame::before {
+    inset: 0.75rem;
+    border-radius: 1.5rem;
+  }
+
+  .app-shell__grid {
+    background-size: 56px 56px;
+  }
+}
